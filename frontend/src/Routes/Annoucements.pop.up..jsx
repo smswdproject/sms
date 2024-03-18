@@ -61,7 +61,7 @@ function Annoucements() {
 
       if (response.status == 200) {
         setImageUrl(response.data.imageUrl);
-        alert("Image uploaded successfully!");
+        alert("Announcement created successfully!");
       } else {
         alert("Failed to upload image");
       }
