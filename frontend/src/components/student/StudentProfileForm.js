@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import DatePicker from 'react-date-picker';
-import Dob from './Dob';
+// import DatePicker from 'react-date-picker';
 
 
 
@@ -197,7 +196,7 @@ const StudentProfileForm = () => {
                             yearAriaLabel="Year"
                         /> */}
 
-                        <Dob/>
+                        {/* <Dob/> */}
                     </div>
                 </div>
             </>
