@@ -2,6 +2,8 @@
 import { Route,Routes } from 'react-router-dom';
 import './App.css';
 import MainDashboard from './components/MainDashboard';
+import studentdashboard from './dashboard/studentdashboard';
+import teacherdashboard from './dashboard/teacherdashboard';
 import { useState } from 'react';
 import Login from './components/Login';
 import Annoucements from './Routes/Annoucements.pop.up.';
@@ -24,11 +26,24 @@ function App() {
 
             <Route path="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></Login>}></Route>
            
-            <Route path="dashboard" element={ 
+            <Route path="admin-dashboard" element={ 
               <PrivateRoute isLoggedIn={isLoggedIn}>
                   <MainDashboard></MainDashboard>
               </PrivateRoute>}>
             </Route>
+
+            <Route path="student-dashboard" element={ 
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                  <studentdashboard></studentdashboard>
+              </PrivateRoute>}>
+            </Route>
+
+            <Route path="teacher-dashboard" element={ 
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                  <teacherdashboard></teacherdashboard>
+              </PrivateRoute>}>
+            </Route>
+
             <Route path="/attendance" element={<Attendance></Attendance>}></Route>
             <Route path="/result" element={<Result></Result>}></Route>
             <Route path="/annoucements" element={<Annoucements></Annoucements>}></Route>
