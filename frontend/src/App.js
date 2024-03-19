@@ -13,6 +13,7 @@ import Fee from './Routes/Fee';
 import Student from './Routes/Student';
 import Publish from './Routes/Publish';
 import PrivateRoute from './components/PrivateRoute';
+import TeacherEntry from "./Routes/TeacherEntry"
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
@@ -36,6 +37,9 @@ function App() {
             <Route path="/fee" element={<Fee></Fee>}></Route>
             <Route path="/student" element={<Student></Student>}></Route>
             <Route path="/publish" element={<Publish></Publish>}></Route>
+
+            {/* To enter the seprate entry in dataBase for teacher */}
+            <Route path="/teacherEntry" element={<TeacherEntry></TeacherEntry>}></Route>
      </Routes>
     
     </div>

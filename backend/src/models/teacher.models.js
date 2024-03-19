@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const teacherSchema = mongoose.Schema(
     {
+        name:{
+            type: String,
+            required: true,
+            maxLength: 50,
+        },
         email: {
             type: String,
             required: true,
@@ -13,11 +18,7 @@ const teacherSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        name:{
-            type: String,
-            required: true,
-            maxLength: 50,
-        },
+        
         subject:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "subjectDB"
