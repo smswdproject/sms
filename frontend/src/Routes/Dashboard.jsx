@@ -3,11 +3,7 @@ import LeftScreenDashboard from '../components/LeftScreenDashboard.jsx/LeftScree
 
 function Dashboard() {
   return (
-    <div>
-    <LeftScreenDashboard></LeftScreenDashboard>
-    
-     
-    </div>
+    <div><LeftScreenDashboard></LeftScreenDashboard></div>
   )
 }
 

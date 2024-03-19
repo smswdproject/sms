@@ -8,7 +8,6 @@ import { FaSave } from "react-icons/fa";
 import { GrAnnounce } from "react-icons/gr";
 import axios from "axios";
 import { MdAnnouncement } from "react-icons/md";
-import Uploadf from "../components/Uploadf";
 
 function Annoucements() {
   const [file, setFile] = useState(null);

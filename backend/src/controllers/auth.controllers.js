@@ -15,7 +15,7 @@ exports.login = async(req, res) => {
             });
         }
 
-        const user = await userDB.findOne({email});
+        const user = await userDB.findOne({email, role});
         if(!user){
             return res.status(401).json({
                 success: false,
@@ -27,7 +27,7 @@ exports.login = async(req, res) => {
             email: user.email,
             id: user._id,
             role: user.role
-        }
+        } 
         if(await bcrypt.compare(password, user.password)){
             let token = jwt.sign(payload,
                                 process.env.JWT_SECRET,
