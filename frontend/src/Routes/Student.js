@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import LeftScreenDashboard from '../components/LeftScreenDashboard.jsx/LeftScreenDashboard';
 import RightAdmin from '../components/DashboadAdmin/RightAdmin';
+import StudentProfileForm from '../components/student/StudentProfileForm';
 
 function Student() {
   const [student,setStudent]=useState("Student");
@@ -12,6 +13,7 @@ function Student() {
       
         <div className='w-4/5 h-screen'>
           <RightAdmin value={student}></RightAdmin>
+          <StudentProfileForm/>
         </div>
     </div>
   )
