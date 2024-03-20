@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StudentModal from '../components/Teacher/StudentModal';
+import StudentModal from '../components/TeacherComponents/StudentModal';
 
 const StudentTable = ({ students }) => {
   const [editableStudents, setEditableStudents] = useState(students);

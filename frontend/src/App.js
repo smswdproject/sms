@@ -6,7 +6,7 @@ import AdminDashboard from './dashboard/AdminDashboard';
 import StudentDashboard from './dashboard/StudentDashboard';
 import TeacherDashboard from './dashboard/TeacherDashboard';
 import Login from './components/Login';
-import Annoucements from './Routes/Annoucements.pop.up.';
+import Annoucements from './Routes/Annoucements.popup.';
 import Attendance from './Routes/Attendance';
 import Result from './Routes/Result';
 import Syllabus from './Routes/Syllabus';

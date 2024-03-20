@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LeftScreenDashboard from "../components/LeftScreenDashboard.jsx/LeftScreenDashboard";
-import RightAdmin from "../components/DashboadComponents/AdminRight";
-import AttendanceTable from "../components/attendence/AttendanceTable";
+import RightAdmin from "../components/AdminComponents/AdminRight";
+import AttendanceTable from "../components/AttendenceComponents/AttendanceTable";
 import studentsData from "./data";
 
 function Attendance() {

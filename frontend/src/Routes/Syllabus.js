@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LeftScreenDashboard from '../components/LeftScreenDashboard.jsx/LeftScreenDashboard';
-import RightAdmin from '../components/DashboadComponents/AdminRight';
-import StudentModal from '../components/Teacher/StudentModal';
+import RightAdmin from '../components/AdminComponents/AdminRight';
+import StudentModal from '../components/TeacherComponents/StudentModal';
 
 function Syllabus() {
   const [syllabus,setSyllabus]=useState("Syllabus");

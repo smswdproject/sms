@@ -1,12 +1,12 @@
 import React from 'react'
-import './RightScreen.css';
+import './LoginModal.css';
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import {  useNavigate,Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
 
-function RightScreen({setIsLoggedIn,isLoggedIn}) {
+function LoginModal({setIsLoggedIn,isLoggedIn}) {
     const [selectedRole,setSelectedRole]=useState("");
 
     const[formData,setFormData]=useState({
@@ -161,4 +161,4 @@ function RightScreen({setIsLoggedIn,isLoggedIn}) {
   )
 }
 
-export default RightScreen
+export default LoginModal

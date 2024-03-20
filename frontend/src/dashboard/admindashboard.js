@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import LeftAdmin from "../components/DashboadComponents/AdminLeft";
-import RightAdmin from "../components/DashboadComponents/AdminRight";
+import LeftAdmin from "../components/AdminComponents/AdminLeft";
+import RightAdmin from "../components/AdminComponents/AdminRight";
 
 function AdminDashboard() {
   const [dashboard, setDashboard] = useState("Dashboard");

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import RightScreen from './RightScreen'
+import LoginModal from './LoginComponents/LoginModal'
 
 function Login({ setIsLoggedIn, isLoggedIn }) {
   return (
@@ -10,7 +10,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
         <div className='text-7xl font-normal'>CSIR-CSIO</div>
         <div className='text-4xl font-normal'>Chandigarh</div>
       </div>
-      <RightScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></RightScreen>
+      <LoginModal isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></LoginModal>
     </div>
   )
 }

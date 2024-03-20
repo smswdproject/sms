@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LeftScreenDashboard from '../components/LeftScreenDashboard.jsx/LeftScreenDashboard';
-import RightAdmin from '../components/DashboadComponents/AdminRight';
-import StudentProfileForm from '../components/student/StudentProfileForm';
+import RightAdmin from '../components/AdminComponents/AdminRight';
+import StudentProfileForm from '../components/StudentComponents/StudentProfileForm';
 
 function Student() {
   const [student,setStudent]=useState("Student");
