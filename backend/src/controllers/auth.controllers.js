@@ -66,7 +66,7 @@ exports.login = async(req, res) => {
 
 exports.createUser = async(req, res) => {
     try{
-        const {email, password, role} = req.body;
+        const {name, email, password, role} = req.body;
         const userExists = await userDB.findOne({email});
         if(userExists){
             res.status(400).json({
@@ -87,7 +87,7 @@ exports.createUser = async(req, res) => {
             });
         }
 
-        const user = await userDB.create({email, password:hashedPassword, role});
+        const user = await userDB.create({name, email, password:hashedPassword, role});
 
         res.status(200).json({
             success: true,

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import './App.css';
 import AdminDashboard from './dashboard/AdminDashboard';
 import StudentDashboard from './dashboard/StudentDashboard';
-// import StudentDashboard from './dashboard/studentdashboard';
 import TeacherDashboard from './dashboard/TeacherDashboard';
 import Login from './components/Login';
 import Annoucements from './Routes/Annoucements.popup.';
