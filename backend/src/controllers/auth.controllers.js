@@ -49,7 +49,7 @@ exports.login = async(req, res) => {
         else{
             return res.status(403).json({
                 success: false,
-                message: "Password is incorrectd",
+                message: "Password is incorrect",
             }); 
         }
         

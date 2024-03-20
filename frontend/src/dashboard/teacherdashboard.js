@@ -1,9 +1,9 @@
 import React from 'react'
 
-function teacherdashboard() {
+function TeacherDashboard() {
   return (
     <div>admin.dashboard</div>
   )
 }
 
-export default teacherdashboard
+export default TeacherDashboard

@@ -1,10 +1,10 @@
 
 import { Route,Routes } from 'react-router-dom';
-import './App.css';
-import MainDashboard from './components/MainDashboard';
-import studentdashboard from './dashboard/studentdashboard';
-import teacherdashboard from './dashboard/teacherdashboard';
 import { useState } from 'react';
+import './App.css';
+import AdminDashboard from './dashboard/AdminDashboard';
+import StudentDashboard from './dashboard/StudentDashboard';
+import TeacherDashboard from './dashboard/TeacherDashboard';
 import Login from './components/Login';
 import Annoucements from './Routes/Annoucements.pop.up.';
 import Attendance from './Routes/Attendance';
@@ -25,22 +25,11 @@ function App() {
      <Routes>
 
             <Route path="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></Login>}></Route>
-           
+
+
             <Route path="/admin-dashboard" element={ 
               <PrivateRoute isLoggedIn={isLoggedIn}>
-                  <MainDashboard></MainDashboard>
-              </PrivateRoute>}>
-            </Route>
-
-            <Route path="/student-dashboard" element={ 
-              <PrivateRoute isLoggedIn={isLoggedIn}>
-                  <studentdashboard></studentdashboard>
-              </PrivateRoute>}>
-            </Route>
-
-            <Route path="/teacher-dashboard" element={ 
-              <PrivateRoute isLoggedIn={isLoggedIn}>
-                  <teacherdashboard></teacherdashboard>
+                  <AdminDashboard></AdminDashboard>
               </PrivateRoute>}>
             </Route>
 
@@ -53,7 +42,23 @@ function App() {
             <Route path="/student" element={<Student></Student>}></Route>
             <Route path="/publish" element={<Publish></Publish>}></Route>
 
-            {/* To enter the seprate entry in dataBase for teacher */}
+
+
+            <Route path="/student-dashboard" element={ 
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                  <StudentDashboard></StudentDashboard>
+              </PrivateRoute>}>
+            </Route>
+
+            <Route path="/teacher-dashboard" element={ 
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                  <TeacherDashboard></TeacherDashboard>
+              </PrivateRoute>}>
+            </Route>
+
+            
+            
+
             <Route path="/createuser" element={<CreateUser></CreateUser>}></Route>
      </Routes>
     

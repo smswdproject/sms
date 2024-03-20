@@ -2,62 +2,62 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RiAdminLine } from "react-icons/ri";
 
-function studentdashboard() {
+function StudentDashboard() {
   const navigate = useNavigate;
-  function onClickHandlerD(){
+  function onClickHandlerD() {
     navigate("/dashboard");
   }
 
-  
 
-   function onClickHandlerAtt(){
+
+  function onClickHandlerAtt() {
     navigate("/attendance");
-   }
+  }
 
-   function onClickHandlerRes(){
+  function onClickHandlerRes() {
     navigate("/result");
-    
-   }
 
-   function onClickHandlerSyll(){
+  }
+
+  function onClickHandlerSyll() {
     navigate("/syllabus")
-   }
+  }
 
-   
 
-   
-   
-   function onClickHandlerFee(){
+
+
+
+  function onClickHandlerFee() {
     navigate("/fee")
-   }
+  }
 
 
   return (
-    
-        <div className='flex flex-col gap-1'>
-    {/* Admin Title bar */}
-        <div className=" flex justify-center items-end h-32 bg-white ">
-          <h1 className='flex font-normal text-3xl pb-3'>
-           <RiAdminLine /> Student
-          </h1>
-        </div>
+
+    <div className='flex flex-col gap-1'>
+      {/* Admin Title bar */}
+      <div className=" flex justify-center items-end h-32 bg-white ">
+        <h1 className='flex font-normal text-3xl pb-3'>
+          <RiAdminLine /> Student
+        </h1>
+      </div>
 
 
-    {/* Menu bar */}
-        <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
-            <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerD}>Dashboad</div>
+      {/* Menu bar */}
+      <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
+        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerD}>Dashboad</div>
 
-            <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerAtt}>Attendance</div>
-            <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerRes}>Result</div>
-            <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerSyll}>Syllabus </div>
+        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerAtt}>Attendance</div>
+        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerRes}>Result</div>
+        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerSyll}>Syllabus </div>
 
 
-            <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerFee}>Fee</div>
+        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerFee}>Fee</div>
 
-        </div>
+      </div>
 
     </div>
   )
 }
 
-export default studentdashboard
+export default StudentDashboard

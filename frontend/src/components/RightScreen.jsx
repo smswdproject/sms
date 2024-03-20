@@ -15,7 +15,7 @@ function RightScreen({setIsLoggedIn,isLoggedIn}) {
         role:""
     })   
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const[showPassword,setShowPassword]=useState(false);
 
     const submitHandler = async(event)=>{
