@@ -3,7 +3,7 @@ import RightAdmin from "../components/AdminComponents/AdminRight";
 import StudentLeft from "../components/StudentComponents/StudentLeft";
 import StudentRight from "../components/StudentComponents/StudentRight";
 
-function AdminDashboard() {
+function StudentDashboard() {
   const [dashboard, setDashboard] = useState("Dashboard");
   return (
     <div className="bg-lavender font-poppins text-black-blue flex">
@@ -58,4 +58,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard
+export default StudentDashboard
