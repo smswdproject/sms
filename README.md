@@ -1,8 +1,8 @@
 
 # ================================ PACKAGES ===============================
 
-# BACKEND DEPENDENCIES :- express, mongoose, dotenv, express-fileupload, fileupload, bcrypt, jsonwebtoken, cors
+# BACKEND DEPENDENCIES :- express, mongoose, dotenv, express-fileupload, fileupload, bcrypt, jsonwebtoken, cors, csvtojson, json2csv
 
-# Frontend dependencies: axios
+# FRONTEND DEPENDENCIES: axios
 
 # DEV-DEPENDENCIES :- nodemon, prettier

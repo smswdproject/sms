@@ -4,6 +4,7 @@ const fileupload = require("express-fileupload");
 const annRoutes = require("./routes/ann.routes");
 const authRoutes = require("./routes/auth.routes");
 const createUserRoutes = require("./routes/createuser.routes");
+const studentExportRoutes = require("./routes/studentExport.routes");
 
 const app = express();
 
@@ -33,6 +34,10 @@ app.use("/login", authRoutes);
 // MOUNTING THE CREATE USER ROUTES
 app.use("/createuser", createUserRoutes);
 
+
+
+// EXPORTING THE USER DATA FROM DATABASE TO CSV FILE
+app.use("/export", studentExportRoutes);
 
 
 
