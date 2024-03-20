@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import AdminDashboard from './dashboard/AdminDashboard';
 import StudentDashboard from './dashboard/StudentDashboard';
+// import StudentDashboard from './dashboard/studentdashboard';
 import TeacherDashboard from './dashboard/TeacherDashboard';
 import Login from './components/Login';
 import Annoucements from './Routes/Annoucements.popup.';
@@ -16,6 +17,7 @@ import Student from './Routes/Student';
 import Publish from './Routes/Publish';
 import PrivateRoute from './components/PrivateRoute';
 import CreateUser from "./Routes/CreateUser"
+import StudentProfile from './components/StudentComponents/StudentProfile';
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
@@ -60,6 +62,9 @@ function App() {
             
 
             <Route path="/createuser" element={<CreateUser></CreateUser>}></Route>
+
+            {/* To set the student profile in the student-dashboard section */}
+            <Route path="/student-dashboard/student-profile" element={<StudentProfile></StudentProfile>}></Route>
      </Routes>
     
     </div>

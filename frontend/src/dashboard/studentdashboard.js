@@ -1,63 +1,61 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { RiAdminLine } from "react-icons/ri";
+import React, { useState } from "react";
+import RightAdmin from "../components/AdminComponents/AdminRight";
+import StudentLeft from "../components/StudentComponents/StudentLeft";
+import StudentRight from "../components/StudentComponents/StudentRight";
 
-function StudentDashboard() {
-  const navigate = useNavigate;
-  function onClickHandlerD() {
-    navigate("/dashboard");
-  }
-
-
-
-  function onClickHandlerAtt() {
-    navigate("/attendance");
-  }
-
-  function onClickHandlerRes() {
-    navigate("/result");
-
-  }
-
-  function onClickHandlerSyll() {
-    navigate("/syllabus")
-  }
-
-
-
-
-
-  function onClickHandlerFee() {
-    navigate("/fee")
-  }
-
-
+function AdminDashboard() {
+  const [dashboard, setDashboard] = useState("Dashboard");
   return (
-
-    <div className='flex flex-col gap-1'>
-      {/* Admin Title bar */}
-      <div className=" flex justify-center items-end h-32 bg-white ">
-        <h1 className='flex font-normal text-3xl pb-3'>
-          <RiAdminLine /> Student
-        </h1>
+    <div className="bg-lavender font-poppins text-black-blue flex">
+      <div className="w-1/5 h-screen">
+        <StudentLeft></StudentLeft>
       </div>
 
-
-      {/* Menu bar */}
-      <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
-        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerD}>Dashboad</div>
-
-        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerAtt}>Attendance</div>
-        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerRes}>Result</div>
-        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerSyll}>Syllabus </div>
-
-
-        <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerFee}>Fee</div>
-
+      <div className="w-4/5 h-screen">
+        <StudentRight value={dashboard}></StudentRight>
+        <div className="flex flex-col justify-between content-around ">
+        <a
+          href="#"
+          className="block max-w-sm p-6 my-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        >
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Fees
+          </h5>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {" "}
+            <ul className="hover:active ">
+              {" "}
+              <li> <button>Check fees</button></li>
+              <li> <button>update database</button></li>
+              <li> <button>print reciept </button></li>
+              <li> <button>send</button></li>
+            </ul>
+          </p>
+        </a>
+        <a
+          href="#"
+          className="block max-w-sm p-6 my-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        >
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Fees
+          </h5>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {" "}
+            <ul className="hover:active ">
+              {" "}
+              <li> <button>Check fees</button></li>
+              <li> <button>update database</button></li>
+              <li> <button>print reciept </button></li>
+              <li> <button>send</button></li>
+            </ul>
+          </p>
+        </a>
+      
+        </div>
+        
       </div>
-
     </div>
-  )
+  );
 }
 
-export default StudentDashboard
+export default AdminDashboard

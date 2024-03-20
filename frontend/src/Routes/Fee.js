@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import LeftScreenDashboard from '../components/LeftScreenDashboard.jsx/LeftScreenDashboard';
+import LeftScreenDashboard from '../components/LeftScreenDashboard/LeftScreenDashboard';
 import RightAdmin from '../components/AdminComponents/AdminRight';
 
 function Fee() {
