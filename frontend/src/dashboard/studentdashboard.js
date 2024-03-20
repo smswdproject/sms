@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { RiAdminLine } from "react-icons/ri";
 
 function studentdashboard() {
-  const navigate=useNavigate();
+  const navigate = useNavigate;
   function onClickHandlerD(){
     navigate("/dashboard");
   }

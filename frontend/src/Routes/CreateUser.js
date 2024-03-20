@@ -1,82 +1,13 @@
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// function TeacherEntry() {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     password: '',
-//     subject: ''
-//   });
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post('/api/teachers', formData);
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   return (
-//     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-poppins">
-//       <div className="max-w-md w-full space-y-8">
-//         <div>
-//           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Teacher Registration</h2>
-//         </div>
-//         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-//           <div className="rounded-md shadow-sm -space-y-px">
-//             <div>
-//               <label htmlFor="name" className="sr-only">Name</label>
-//               <input id="name" name="name" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name" onChange={handleChange} />
-//             </div>
-//             <div>
-//               <label htmlFor="email" className="sr-only">Email</label>
-//               <input id="email" name="email" type="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" onChange={handleChange} />
-//             </div>
-//             <div>
-//               <label htmlFor="password" className="sr-only">Password</label>
-//               <input id="password" name="password" type="password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" onChange={handleChange} />
-//             </div>
-//             <div>
-//               <label htmlFor="subject" className="sr-only">Subject</label>
-//               <input id="subject" name="subject" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Subject" onChange={handleChange} />
-//             </div>
-//           </div>
-
-//           <div>
-//             <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-//               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-//                 {/* <!-- Heroicon name: solid/lock-closed --> */}
-//                 <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-//                   <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-//                   <path fillRule="evenodd" d="M4 8a8 8 0 1116 0v4a4 4 0 01-4 4H8a4 4 0 01-4-4V8zm2 0a1 1 0 011-1h6a1 1 0 011 1v4a1 1 0 01-1 1H7a1 1 0 01-1-1V8z" clipRule="evenodd" />
-//                 </svg>
-//               </span>
-//               Register
-//             </button>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-// )}
-//     export default TeacherEntry;
-
 import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./TeacherEntry.css";
+import "./CreateUser.css";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function TeacherEntry({ setIsLoggedIn, isLoggedIn }) {
+function CreateUser({ setIsLoggedIn, isLoggedIn }) {
   const [selectedRole, setSelectedRole] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -129,7 +60,7 @@ function TeacherEntry({ setIsLoggedIn, isLoggedIn }) {
     <div className="h-screen top-0 right-0 flex justify-center items-center font-poppins">
       <div className="w-[480px] h-[480px]  flex flex-col justify-center items-start gap-8">
         <div className="flex w-screen gap-4">
-          <h1 className=" text-4xl font-extralight  ">Teacher Registration</h1>
+          <h1 className=" text-4xl font-extralight  ">Create User</h1>
         </div>
 
         <form onSubmit={submitHandler} className="w-full flex flex-col gap-4">
@@ -258,4 +189,4 @@ function TeacherEntry({ setIsLoggedIn, isLoggedIn }) {
   );
 }
 
-export default TeacherEntry;
+export default CreateUser;

@@ -15,7 +15,7 @@ import Fee from './Routes/Fee';
 import Student from './Routes/Student';
 import Publish from './Routes/Publish';
 import PrivateRoute from './components/PrivateRoute';
-import TeacherEntry from "./Routes/TeacherEntry"
+import CreateUser from "./Routes/CreateUser"
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
@@ -26,19 +26,19 @@ function App() {
 
             <Route path="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></Login>}></Route>
            
-            <Route path="admin-dashboard" element={ 
+            <Route path="/admin-dashboard" element={ 
               <PrivateRoute isLoggedIn={isLoggedIn}>
                   <MainDashboard></MainDashboard>
               </PrivateRoute>}>
             </Route>
 
-            <Route path="student-dashboard" element={ 
+            <Route path="/student-dashboard" element={ 
               <PrivateRoute isLoggedIn={isLoggedIn}>
                   <studentdashboard></studentdashboard>
               </PrivateRoute>}>
             </Route>
 
-            <Route path="teacher-dashboard" element={ 
+            <Route path="/teacher-dashboard" element={ 
               <PrivateRoute isLoggedIn={isLoggedIn}>
                   <teacherdashboard></teacherdashboard>
               </PrivateRoute>}>
@@ -54,7 +54,7 @@ function App() {
             <Route path="/publish" element={<Publish></Publish>}></Route>
 
             {/* To enter the seprate entry in dataBase for teacher */}
-            <Route path="/teacherEntry" element={<TeacherEntry></TeacherEntry>}></Route>
+            <Route path="/createuser" element={<CreateUser></CreateUser>}></Route>
      </Routes>
     
     </div>

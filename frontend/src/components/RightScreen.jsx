@@ -69,7 +69,7 @@ function RightScreen({setIsLoggedIn,isLoggedIn}) {
         console.log("Role on frontend is ---->",selectedRole)
     }
   return (
-    <div className='h-screen w-2/4 absolute top-0 right-0 flex justify-center items-center font-poppins'>
+    <div className='h-screen flex justify-center items-center font-poppins'>
         <div className='w-[480px] h-[480px]  flex flex-col justify-center items-start gap-8'>
             
             <div className='flex w-screen gap-4'>
