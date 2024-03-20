@@ -1,218 +1,364 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 // import DatePicker from 'react-date-picker';
-
-
-
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const StudentProfileForm = () => {
-    // const ValuePiece = Date | null;
-    // const Value = ValuePiece | [ValuePiece, ValuePiece];
-    // const [value, onChange] = useState < Value > (new Date());
+  const [startDate, setStartDate] = useState("04/23/2005");
+  //const [roll,setRoll]=useState("");
 
+  const [formData, setFormData] = useState({
+    fname: "",
+    email: "",
+    password: "",
+    roll1: "",
+    roll2: "",
+    roll: "",
+    message: "",
+    contactNo: "",
+    gender: "",
+    DOB: "",
+    fatherName: "",
+    motherName: "",
+    parentContactNo: "",
+    address: "",
+    city: "",
+    pinCode: "",
+    state: "",
+    img:""
+  });
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-        contactNo: "",
-        gender: "",
-        DOB: "",
-        fatherName: "",
-        motherName: "",
-        parentContactNo: "",
-        address: "",
-        city: "",
-        pinCode: "",
-        state: "",
-    });
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prevState) => ({
+//       ...prevState,
+//       [name]: value,
+//     }));
+//   };
+function  handleChange(event) {
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here you can perform any actions you want with the form data
-        console.log(formData);
-        // You can also reset the form after submission if needed
-        setFormData({
-            name: '',
-            email: '',
-            message: '',
-            contactNo: "",
-            gender: "",
-            gender: "",
-            DOB: "",
-            fatherName: "",
-            motherName: "",
-            parentContactNo: "",
-            address: "",
-            city: "",
-            pinCode: "",
-            state: "",
-        });
-    };
-
-    return (
-        <div>
-
-
-
-            <form className=" max-w mx-auto" onSubmit={handleSubmit}>
-
-
-
-
-
-
-
-
-            </form>
-            <>
-                {/* component */}
-                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
-                    <div className="-mx-3 md:flex mb-6">
-                        <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-first-name"
-                            >
-                                First Name
-                            </label>
-                            <input
-                                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-                                id="grid-first-name"
-                                type="text"
-                                placeholder="Jane"
-                            />
-                            <p className="text-red text-xs italic">Please fill out this field.</p>
-                        </div>
-                        <div className="md:w-1/2 px-3">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-last-name"
-                            >
-                                Last Name
-                            </label>
-                            <input
-                                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                id="grid-last-name"
-                                type="text"
-                                placeholder="Doe"
-                            />
-                        </div>
-                    </div>
-                    <div className="-mx-3 md:flex mb-6">
-                        <div className="md:w-full px-3">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-password"
-                            >
-                                Password
-                            </label>
-                            <input
-                                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-                                id="grid-password"
-                                type="password"
-                                placeholder="******************"
-                            />
-                            <p className="text-grey-dark text-xs italic">
-                                Make it as long and as crazy as you'd like
-                            </p>
-                        </div>
-                    </div>
-                    <div className="-mx-3 md:flex mb-2">
-                        <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-city"
-                            >
-                                City
-                            </label>
-                            <input
-                                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                id="grid-city"
-                                type="text"
-                                placeholder="Chandigarh"
-                            />
-                        </div>
-                        <div className="md:w-1/2 px-3">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-state"
-                            >
-                                State
-                            </label>
-                            <div className="relative">
-                                <select
-                                    className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
-                                    id="grid-state"
-                                >
-                                    <option>New Mexico</option>
-                                    <option>Missouri</option>
-                                    <option>Texas</option>
-                                </select>
-                                <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                                    <svg
-                                        className="h-4 w-4"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="md:w-1/2 px-3">
-                            <label
-                                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-                                htmlFor="grid-zip"
-                            >
-                                Zip
-                            </label>
-                            <input
-                                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                id="grid-zip"
-                                type="text"
-                                placeholder={90210}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        {/* <DatePicker
-                            calendarAriaLabel="Toggle calendar"
-                            clearAriaLabel="Clear value"
-                            dayAriaLabel="Day"
-                            monthAriaLabel="Month"
-                            nativeInputAriaLabel="Date"
-                            onChange={onChange}
-                            value={value}
-                            yearAriaLabel="Year"
-                        /> */}
-
-                        {/* <Dob/> */}
-                    </div>
-                </div>
-            </>
-            <button
-                type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-                Submit
-            </button>
-
-
-
-
-        </div>
-
-    )
+    setFormData( (prevData) =>(
+        {
+            ...prevData,
+            [event.target.name]:event.target.value
+        }
+    ) )
 }
 
-export default StudentProfileForm
+  const handleSubmit = (e) => {
+     e.preventDefault();
+
+    formData.roll = formData.roll1 + formData.roll2;
+    formData.DOB = startDate;
+
+    // You can also reset the form after submission if needed
+    // setFormData({
+    //   fname: "",
+    //   email: "",
+    //   message: "",
+    //   contactNo: "",
+    //   gender: "",
+    //   DOB: "",
+    //   fatherName: "",
+    //   motherName: "",
+    //   address: "",
+    //   city: "",
+    //   pinCode: "",
+    //   state: "",
+    // });
+
+    // Here you can perform any actions you want with the form data
+    console.log("Form Data is----> ", formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+    <div className="h-screen overflow-scroll font-poppins gap-y-2">
+      <div className="flex-col justify-center mt-56 item-center">
+        <form className="max-w-[420px] mx-auto" >
+          <h1 className="mb-3 text-lg font-bold">Create Profile for Student</h1>
+
+          {/* Name of student */}
+
+          <div>
+            <label
+              htmlFor="fname"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Full Name <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="text"
+              id="fname"
+              value={formData.fname}
+              name="fname"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+          <div className="flex items-start mb-5"></div>
+
+
+          {/* Date Of birth */}
+          <label
+            htmlFor="DOB"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Date Of Birth <sup className="text-pink-500">*</sup>
+          </label>
+          <DatePicker
+            className=" bg-gray-50 border border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+              dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
+
+          <div className="flex items-start mb-5"></div>
+
+          {/* FatherName  */}
+          <div>
+            <label
+              htmlFor="fatherName"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Father Name <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="text"
+              id="fatherName"
+              value={formData.fatherName}
+              name="fatherName"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+          <div className="flex items-start mb-5"></div>
+
+
+          {/* Mother's name */}
+          <div className="">
+            <label
+              htmlFor="motherName"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Mother Name <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="text"
+              id="motherName"
+              value={formData.motherName}
+              name="motherName"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+          <div className="flex items-start mb-5"></div>
+
+          {/* contact number */}
+          <div>
+            <label
+              htmlFor="contactNo"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Contact Number <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="number"
+              id="contactNo"
+              placeholder="+91"
+              maxLength={10}
+              value={formData.contactNo}
+              name="contactNo"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+          <div className="flex items-start mb-5"></div>
+
+
+          {/* Gender */}
+          <form className="max-w-[420px] mx-auto mb-5">
+            <label
+              htmlFor="gender"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Gender <sup className="text-pink-500">*</sup>
+            </label>
+            <select
+              id="gender"
+              //   value={formData.gender}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected="">Choose</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </form>
+
+          {/* Address */}
+          <div className="mb-5">
+            <label
+              htmlFor="address"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Address <sup className="text-pink-500">*</sup>
+            </label>
+            <textarea
+              type="text"
+              id="address"
+              value={formData.address}
+              name="address"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+
+          {/* Pincode */}
+          <div>
+            <label
+              htmlFor="pinCode"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Pincode <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="number"
+              id="pinCode"
+              value={formData.pinCode}
+              name="pinCode"
+              onChange={handleChange}
+              maxLength={10}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+
+          {/* Email */}
+
+          <div className="flex items-start mb-5"></div>
+
+          <div className="mb-5">
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Your email <sup className="text-pink-500">*</sup>
+            </label>
+            <h2 className="font-medium text-gray-900 dark:text-white">{}</h2>
+          </div>
+
+          <div className="mb-5">
+            <label
+              htmlFor="password"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Your password <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="password"
+              value={formData.pass}
+              id="password"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+          <div className="flex items-start mb-5"></div>
+        </form>
+
+        {/* Enter roll number */}
+        <div className="flex justify-center w-full mx-auto mb-5 gap-x-8">
+          <div>
+            <label
+              htmlFor="roll1"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Roll Number <sup className="text-pink-500">*</sup>
+            </label>
+            <select
+              id="roll1"
+              //   value={formData.gender}
+              className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected="">Choose</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+
+          {/* roll2 */}
+          <div className="">
+            <label
+              htmlFor="roll2"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Enter values from 001 to 180{" "}
+              <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              type="text"
+              id="roll2"
+              value={formData.roll2}
+              name="roll2"
+              min={1}
+              max={180}
+              maxLength={3}
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 w-[300px]
+               text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+            />
+          </div>
+        </div>
+
+        {/* To upload the image of the student */}
+        <form className="max-w-[420px] mx-auto">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor="user_avatar"
+          >
+            Upload file <sup className="text-pink-500">*</sup>
+          </label>
+          <input
+            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            aria-describedby="user_avatar_help"
+            value={formData.img}
+            onChange={handleChange}
+            id="user_avatar"
+            type="file"
+          />
+          <div
+            className="mt-4 text-sm text-gray-500 dark:text-gray-300"
+            id="user_avatar_help"
+          >
+            A profile picture is useful to confirm your are logged into your
+            account
+          </div>
+
+          <button
+            type="submit"
+            className="mt-4 text-white bg-blue-700
+             hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+              font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
+               dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    </form>
+  );
+};
+
+export default StudentProfileForm;
