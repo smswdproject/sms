@@ -9,3 +9,7 @@
     align-items: center;
     gap:1rem;
 }
+
+.background{
+    background-image: url();
+}

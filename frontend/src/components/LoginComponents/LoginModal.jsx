@@ -69,7 +69,7 @@ function LoginModal({setIsLoggedIn,isLoggedIn}) {
         console.log("Role on frontend is ---->",selectedRole)
     }
   return (
-    <div className='h-screen flex justify-center items-center font-poppins'>
+    <div className='h-screen flex justify-center items-center font-poppins bg-gradient-to-r from-cyan-500 to-blue-500'>
         <div className='w-[480px] h-[480px]  flex flex-col justify-center items-start gap-8'>
             
             <div className='flex w-screen gap-4'>
