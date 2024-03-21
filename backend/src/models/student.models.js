@@ -14,12 +14,12 @@ const studentSchema = mongoose.Schema(
         contactNo:{
             type: Number,
             // required: true,
+            // required: true,
+            maxLength: 10,
             trim: true,
         },
         gender:{
             type: String,
-            // required: true,
-            maxLength: 10,
         },
         DOB: {
             type: Date,

@@ -6,14 +6,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
 
-<<<<<<< HEAD
-function LoginModal({setIsLoggedIn,isLoggedIn}) {
-   
-    const [selectedRole,setSelectedRole]=useState("");
-=======
 function LoginModal({ setIsLoggedIn, isLoggedIn }) {
     const [selectedRole, setSelectedRole] = useState("");
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
 
     const [formData, setFormData] = useState({
         email: "",
@@ -74,35 +68,12 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
         setSelectedRole(e.target.value);
         console.log("Role on frontend is ---->", selectedRole)
     }
-<<<<<<< HEAD
-  return (
-    <div className='flex items-center justify-center h-screen font-poppins'>
-        <div className='w-[480px] h-[480px]  flex flex-col justify-center items-start gap-8'>
-            
-            <div className='flex w-screen gap-4'>
-                <h1 className='text-4xl font-extralight'>Login As</h1>
-                <select name="role" id="role" value={selectedRole} onChange={handlerChange}>
-                    <option value="">Select Role</option>
-                    <option value="admin">Admin</option>
-                    <option value="teacher">Teacher</option>
-                    <option value="student">Student</option>
-                </select>
-            </div>
-        
-            <form  onSubmit={submitHandler} className='flex flex-col w-full gap-4' >
-            <div className=''>
-                <label>
-                        <p className=''>Email address <sup className='text-pink-500'
-                        >*</sup>
-                        </p>
-=======
     return (
-        <div className='h-screen w-screen flex justify-center items-center font-poppins background'>
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
+        <div className='flex items-center justify-center w-screen h-screen font-poppins background'>
 
-            <div className='flex flex-col justify-center items-start gap-8 modal-box'>
+            <div className='flex flex-col items-start justify-center gap-8 modal-box'>
                 <div className='flex w-full gap-4'>
-                    <h1 className=' text-4xl font-medo  '>Login As</h1>
+                    <h1 className='text-4xl font-medo'>Login As</h1>
                     <select className='bg-inherit' name="role" id="role" value={selectedRole} onChange={handlerChange}>
                         <option value="">Select Role</option>
                         <option value="admin">Admin</option>
@@ -111,12 +82,8 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
                     </select>
                 </div>
 
-                <form onSubmit={submitHandler} className='w-full flex flex-col gap-4' >
+                <form onSubmit={submitHandler} className='flex flex-col w-full gap-4' >
 
-<<<<<<< HEAD
-            <div>
-                <label className='relative w-full'>
-=======
                     <div>
                         <label>
                             <p className=''>Email address <sup className='text-pink-500'
@@ -129,7 +96,7 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
                                 onChange={changeHandler}
                                 placeholder='name@email.com'
                                 name="email"
-                                className='input-n-button bg-transparent input-field'
+                                className='bg-transparent input-n-button input-field'
                             ></input>
                         </label>
                     </div>
@@ -137,28 +104,17 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
 
                     <div>
                         <label className='relative'>
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
                             <p >Password <sup className='text-pink-500'
                             >*</sup>
                             </p>
 
-<<<<<<< HEAD
-                        <input required 
-                            type={showPassword?("text"):("password")}
-                            value={formData.password}
-                            onChange={changeHandler}
-                            placeholder='********'
-                            name="password"
-                            className='relative input-n-button'
-=======
                             <input required
                                 type={showPassword ? ("text") : ("password")}
                                 value={formData.password}
                                 onChange={changeHandler}
                                 placeholder='********'
                                 name="password"
-                                className='input-n-button relative'
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
+                                className='relative input-n-button'
                             ></input>
 
                             <span onClick={() => setShowPassword((prev) => !prev)}
@@ -166,20 +122,14 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
                                 {!showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill="#AFB2BF"></AiOutlineEye>)}
                             </span>
 
-<<<<<<< HEAD
-                        <Link to="#">
-                              <p className='ml-auto text-xs text-blue-100 max-w-max '>Forget Password</p>
-                        </Link>
-                    </label>
-=======
                             <Link to="#">
-                                <p className='text-xs text-blue-100 max-w-max ml-auto '>Forget Password</p>
+                                <p className='ml-auto text-xs text-blue-100 max-w-max '>Forget Password</p>
                             </Link>
                         </label>
                     </div>
 
 
-                    <button className='input-n-button text-white bg-custom-color' onClick={() => {isLoggedIn = true}}>Login</button>
+                    <button className='text-white input-n-button bg-custom-color' onClick={() => {isLoggedIn = true}}>Login</button>
 
 
                     <div>
@@ -190,36 +140,9 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
 
                 </form>
 
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
             </div>
 
 
-<<<<<<< HEAD
-              {/* <div>
-                 <input type='checkbox'
-                 name='checkBox'
-                 id='checkbox'
-                 />
-                 <label htmlFor='checkbox'>Remember me</label>
-              </div> */}
-
-
-                <button  className='text-white input-n-button bg-custom-color' onClick={()=>{
-                    isLoggedIn=true
-                }}
-               >Login</button>
-
-
-              <div>
-                <button  className='input-n-button'>
-                <FcGoogle />
-                Authorize with google</button>
-              </div>
-                
-               
-            </form>
-=======
->>>>>>> b5baccbcbdb2d7901727383799329087cbd5466d
         </div>
     )
 }

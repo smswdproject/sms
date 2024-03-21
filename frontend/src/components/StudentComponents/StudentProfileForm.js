@@ -4,7 +4,18 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+} from "react-country-state-city";
+
+import "react-country-state-city/dist/react-country-state-city.css";
+
 const StudentProfileForm = () => {
+  const [countryid, setCountryid] = useState(101);
+  const [stateid, setstateid] = useState(0);
+
   const [startDate, setStartDate] = useState("04/23/2005");
   //const [roll,setRoll]=useState("");
 
@@ -15,7 +26,6 @@ const StudentProfileForm = () => {
     roll1: "",
     roll2: "",
     roll: "",
-    message: "",
     contactNo: "",
     gender: "",
     DOB: "",
@@ -23,50 +33,24 @@ const StudentProfileForm = () => {
     motherName: "",
     parentContactNo: "",
     address: "",
+    state: "",
     city: "",
     pinCode: "",
-    state: "",
-    img:""
+    img: "",
   });
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prevState) => ({
-//       ...prevState,
-//       [name]: value,
-//     }));
-//   };
-function  handleChange(event) {
-
-    setFormData( (prevData) =>(
-        {
-            ...prevData,
-            [event.target.name]:event.target.value
-        }
-    ) )
-}
+  function handleChange(event) {
+    setFormData((prevData) => ({
+      ...prevData,
+      [event.target.name]: event.target.value,
+    }));
+  }
 
   const handleSubmit = (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     formData.roll = formData.roll1 + formData.roll2;
     formData.DOB = startDate;
-
-    // You can also reset the form after submission if needed
-    // setFormData({
-    //   fname: "",
-    //   email: "",
-    //   message: "",
-    //   contactNo: "",
-    //   gender: "",
-    //   DOB: "",
-    //   fatherName: "",
-    //   motherName: "",
-    //   address: "",
-    //   city: "",
-    //   pinCode: "",
-    //   state: "",
-    // });
 
     // Here you can perform any actions you want with the form data
     console.log("Form Data is----> ", formData);
@@ -74,290 +58,302 @@ function  handleChange(event) {
 
   return (
     <form onSubmit={handleSubmit}>
-    <div className="h-screen overflow-scroll font-poppins gap-y-2">
-      <div className="flex-col justify-center mt-56 item-center">
-        <form className="max-w-[420px] mx-auto" >
-          <h1 className="mb-3 text-lg font-bold">Create Profile for Student</h1>
+      <div className="h-screen overflow-scroll font-poppins gap-y-2">
+        <div className="flex-col justify-center mt-56 item-center">
+          <div className="max-w-[420px] mx-auto">
+            <h1 className="mb-3 text-lg font-bold">
+              Create Profile for Student
+            </h1>
 
-          {/* Name of student */}
 
-          <div>
+            
+
+            {/* Name of student */}
+
+            <div>
+              <label
+                htmlFor="fname"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Full Name <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="text"
+                id="fname"
+                value={formData.fname}
+                name="fname"
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
+            <div className="flex items-start mb-5"></div>
+
+            {/* Date Of birth */}
             <label
-              htmlFor="fname"
+              htmlFor="DOB"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Full Name <sup className="text-pink-500">*</sup>
+              Date Of Birth <sup className="text-pink-500">*</sup>
             </label>
-            <input
-              type="text"
-              id="fname"
-              value={formData.fname}
-              name="fname"
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div className="flex items-start mb-5"></div>
-
-
-          {/* Date Of birth */}
-          <label
-            htmlFor="DOB"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Date Of Birth <sup className="text-pink-500">*</sup>
-          </label>
-          <DatePicker
-            className=" bg-gray-50 border border-gray-300 text-gray-900 
+            <DatePicker
+              className=" bg-gray-50 border border-gray-300 text-gray-900 
             text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
              dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
               dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-
-          <div className="flex items-start mb-5"></div>
-
-          {/* FatherName  */}
-          <div>
-            <label
-              htmlFor="fatherName"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Father Name <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="text"
-              id="fatherName"
-              value={formData.fatherName}
-              name="fatherName"
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
             />
-          </div>
-          <div className="flex items-start mb-5"></div>
 
+            <div className="flex items-start mb-5"></div>
 
-          {/* Mother's name */}
-          <div className="">
-            <label
-              htmlFor="motherName"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Mother Name <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="text"
-              id="motherName"
-              value={formData.motherName}
-              name="motherName"
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div className="flex items-start mb-5"></div>
+            {/* FatherName  */}
+            <div>
+              <label
+                htmlFor="fatherName"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Father Name <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="text"
+                id="fatherName"
+                value={formData.fatherName}
+                name="fatherName"
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
+            <div className="flex items-start mb-5"></div>
 
-          {/* contact number */}
-          <div>
-            <label
-              htmlFor="contactNo"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Contact Number <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="number"
-              id="contactNo"
-              placeholder="+91"
-              maxLength={10}
-              value={formData.contactNo}
-              name="contactNo"
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div className="flex items-start mb-5"></div>
+            {/* Mother's name */}
+            <div className="">
+              <label
+                htmlFor="motherName"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Mother Name <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="text"
+                id="motherName"
+                value={formData.motherName}
+                name="motherName"
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
+            <div className="flex items-start mb-5"></div>
 
+            {/* contact number */}
+            <div>
+              <label
+                htmlFor="contactNo"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Contact Number <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="number"
+                id="contactNo"
+                placeholder="+91"
+                maxLength={10}
+                value={formData.contactNo}
+                name="contactNo"
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
+            <div className="flex items-start mb-5"></div>
 
-          {/* Gender */}
-          <form className="max-w-[420px] mx-auto mb-5">
-            <label
-              htmlFor="gender"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Gender <sup className="text-pink-500">*</sup>
-            </label>
-            <select
-              id="gender"
-              //   value={formData.gender}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected="">Choose</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </form>
+            {/* Gender */}
+            <div className="max-w-[420px] mx-auto mb-5">
+              <label
+                htmlFor="gender"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Gender <sup className="text-pink-500">*</sup>
+              </label>
+              <select
+                id="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                name="gender"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected="">Choose</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
 
-          {/* Address */}
-          <div className="mb-5">
-            <label
-              htmlFor="address"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Address <sup className="text-pink-500">*</sup>
-            </label>
-            <textarea
-              type="text"
-              id="address"
-              value={formData.address}
-              name="address"
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
+            {/* Address */}
+            <div className="mb-5">
+              <label
+                htmlFor="address"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Address <sup className="text-pink-500">*</sup>
+              </label>
+              <textarea
+                type="text"
+                id="address"
+                value={formData.address}
+                name="address"
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
 
-          {/* Pincode */}
-          <div>
-            <label
-              htmlFor="pinCode"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Pincode <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="number"
-              id="pinCode"
-              value={formData.pinCode}
-              name="pinCode"
-              onChange={handleChange}
-              maxLength={10}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
+            {/* Select state and city */}
+            <div>
+              <h6>
+                State <sup className="text-pink-500">*</sup>
+              </h6>
+              <StateSelect
+                countryid={countryid}
+                onChange={(e) => {
+                  setstateid(e.id);
+                  console.log("State Select --->", e.name);
+                  formData.state = e.name;
+                }}
+                placeHolder="Select State"
+              />
+              <div className="flex items-start mb-5"></div>
+              <h6>
+                City <sup className="text-pink-500">*</sup>
+              </h6>
+              <CitySelect
+                countryid={countryid}
+                stateid={stateid}
+                onChange={(e) => {
+                  console.log("City Inside Country is----> ", e.name);
+                  formData.city = e.name;
+                }}
+                placeHolder="Select City"
+              />
+            </div>
+            <div className="flex items-start mb-5"></div>
 
-          {/* Email */}
+            {/* Pincode */}
+            <div>
+              <label
+                htmlFor="pinCode"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Pincode <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="number"
+                id="pinCode"
+                value={formData.pinCode}
+                name="pinCode"
+                onChange={handleChange}
+                maxLength={10}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required=""
+              />
+            </div>
 
-          <div className="flex items-start mb-5"></div>
+           
 
-          <div className="mb-5">
-            <label
-              htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Your email <sup className="text-pink-500">*</sup>
-            </label>
-            <h2 className="font-medium text-gray-900 dark:text-white">{}</h2>
-          </div>
+          {/* Enter roll number */}
+          <div className="flex justify-center w-full mt-4 mb-5 gap-x-8">
+            <div>
+              <label
+                htmlFor="roll1"
+                className="block text-sm font-medium text-gray-900 dark:text-white"
+              > Roll  Number <sup className="text-pink-500">*</sup>
+              </label>
+              <select
+                id="roll1"
+                value={formData.roll1}
+                onChange={handleChange}
+                name="roll1"
+                //   value={formData.gender}
+                className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected="">Choose</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
 
-          <div className="mb-5">
-            <label
-              htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Your password <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="password"
-              value={formData.pass}
-              id="password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div className="flex items-start mb-5"></div>
-        </form>
-
-        {/* Enter roll number */}
-        <div className="flex justify-center w-full mx-auto mb-5 gap-x-8">
-          <div>
-            <label
-              htmlFor="roll1"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Roll Number <sup className="text-pink-500">*</sup>
-            </label>
-            <select
-              id="roll1"
-              //   value={formData.gender}
-              className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected="">Choose</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-            </select>
-          </div>
-
-          {/* roll2 */}
-          <div className="">
-            <label
-              htmlFor="roll2"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Enter values from 001 to 180{" "}
-              <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              type="text"
-              id="roll2"
-              value={formData.roll2}
-              name="roll2"
-              min={1}
-              max={180}
-              maxLength={3}
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 w-[300px]
+            {/* roll2 */}
+            <div className="">
+              <label
+                htmlFor="roll2"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Enter values from 001 to 180{" "}
+                <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                type="text"
+                id="roll2"
+                value={formData.roll2}
+                name="roll2"
+                min={1}
+                max={180}
+                maxLength={3}
+                onChange={handleChange}
+                className="bg-gray-50 border border-gray-300 w-[300px]
                text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
+                focus:border-blue-500 block  p-2.5 dark:bg-gray-700
+                 dark:border-gray-600 dark:placeholder-gray-400
+                  dark:text-white dark:focus:ring-blue-500
+                 dark:focus:border-blue-500 mt-5"
+                required=""
+              />
+            </div>
+          </div>
+
+          {/* To upload the image of the student */}
+          <div className="max-w-[420px] mx-auto">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="user_avatar"
+            >
+              Upload file <sup className="text-pink-500">*</sup>
+            </label>
+            <input
+              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="user_avatar_help"
+              value={formData.img}
+              onChange={handleChange}
+              id="user_avatar"
+              type="file"
+              name="img"
             />
-          </div>
-        </div>
+            <div
+              className="mt-4 text-sm text-gray-500 dark:text-gray-300"
+              id="user_avatar_help"
+            >
+              A profile picture is useful to confirm your are logged into your
+              account
+            </div>
 
-        {/* To upload the image of the student */}
-        <form className="max-w-[420px] mx-auto">
-          <label
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            htmlFor="user_avatar"
-          >
-            Upload file <sup className="text-pink-500">*</sup>
-          </label>
-          <input
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            aria-describedby="user_avatar_help"
-            value={formData.img}
-            onChange={handleChange}
-            id="user_avatar"
-            type="file"
-          />
-          <div
-            className="mt-4 text-sm text-gray-500 dark:text-gray-300"
-            id="user_avatar_help"
-          >
-            A profile picture is useful to confirm your are logged into your
-            account
-          </div>
-
-          <button
-            type="submit"
-            className="mt-4 text-white bg-blue-700
+            <button
+              type="submit"
+              className="mt-4 text-white bg-blue-700
              hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
               font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
                dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Submit
-          </button>
-        </form>
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+      </div>
     </form>
+  
   );
 };
 
