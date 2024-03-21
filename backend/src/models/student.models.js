@@ -2,27 +2,41 @@ const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema(
     {
-        SID:{
-            type: Number,
-            // required: true,
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true,
+        },
+        password: {
+            type: String,
+            required: true
+        },
+        image:{
+            type: String,
         },
         name:{
             type: String,
             // required: true,
             trim: true,
         },
+        rollNo:{
+            type: Number,
+            // required: true,
+        },
         contactNo:{
             type: Number,
             // required: true,
             trim: true,
-        },
-        gender:{
-            type: String,
-            // required: true,
             maxLength: 10,
         },
         DOB: {
             type: Date,
+            // required: true,
+        },
+        gender:{
+            type: String,
             // required: true,
         },
         fatherName:{
@@ -32,11 +46,6 @@ const studentSchema = mongoose.Schema(
         },
         motherName:{
             type: String,
-            // required: true,
-            trim: true,
-        },
-        parentContactNo: {
-            type: Number,
             // required: true,
             trim: true,
         },

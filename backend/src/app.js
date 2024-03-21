@@ -5,6 +5,7 @@ const annRoutes = require("./routes/ann.routes");
 const authRoutes = require("./routes/auth.routes");
 const createUserRoutes = require("./routes/createuser.routes");
 const studentExportRoutes = require("./routes/studentExport.routes");
+const userRoutes = require("./routes/user.routes")
 
 const app = express();
 
@@ -36,8 +37,13 @@ app.use("/createuser", createUserRoutes);
 
 
 
-// EXPORTING THE USER DATA FROM DATABASE TO CSV FILE
+// MOUNTING THE EXPORT STUDENT DATA ROUTES
 app.use("/export", studentExportRoutes);
+
+
+
+// MOUNTING THE UPDATE STUDENT DETAILS ROUTES
+app.use("/api/v1/student", userRoutes);
 
 
 

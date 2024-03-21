@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userDB = require("../models/user.models");
+const studentDB = require("../models/student.models");
+const teacherDB = require("../models/teacher.models");
 
 exports.login = async(req, res) => {
     try{
@@ -88,7 +90,14 @@ exports.createUser = async(req, res) => {
         }
 
         const user = await userDB.create({name, email, password:hashedPassword, role});
+        if(role === "student"){
+            await studentDB.create({name, email, password:hashedPassword});
+        }
+        else if(role === "teacher"){
+            await teacherDB.create({name, email, password:hashedPassword});
+        }
 
+        user.password = undefined;
         res.status(200).json({
             success: true,
             data: user,
