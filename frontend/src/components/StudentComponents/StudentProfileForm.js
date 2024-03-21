@@ -35,19 +35,39 @@ const StudentProfileForm = () => {
     address: "",
     state: "",
     city: "",
-    pinCode: "",
-    image: ""
+    pinCode: ""
+   
   });
 
+  
+  const [formData2, setFormData2] = useState({
+    image: null
+  });
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFormData2({
+      ...formData,
+      image: file
+    });
+  };
+
+
+  
   function handleChange(event) {
     setFormData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
+      
     }));
   }
 
   function handleFileChange(e) {
+    const imagedata = new FormData();
+    imagedata.append('file', image);
+    // imagedata.append('fileName', image.name);
     setImage(e.target.files[0]);
+    console.log(imagedata)
+    
   };
 
   const handleSubmit = async (e) => {
@@ -56,10 +76,11 @@ const StudentProfileForm = () => {
 
       formData.rollNo = formData.roll1 + formData.roll2;
       formData.DOB = startDate;
-      formData.append("image", image)
+      // formData.push("image", image);
 
       // Here you can perform any actions you want with the form data
       console.log("Form Data is----> ", formData);
+      console.log("Image Data is----> ", image);
 
       const url = "http://localhost:3000/api/v1/student/update";
 
@@ -70,7 +91,9 @@ const StudentProfileForm = () => {
       });
 
       console.log("Response of student profile axios req------>".response);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -344,7 +367,7 @@ const StudentProfileForm = () => {
                 id="image"
                 type="file"
                 name="image"
-                // accept="image/*"
+                 accept="image/*"
                 onChange={handleFileChange}
               />
               <div
