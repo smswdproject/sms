@@ -31,13 +31,7 @@ const studentSchema = mongoose.Schema(
             // required: true,
             maxLength: 10,
             trim: true,
-<<<<<<< HEAD
-        },
-        gender:{
-            type: String,
-=======
             maxLength: 10,
->>>>>>> af4aabcb7f91bc612fed3148d6ad314c672c5846
         },
         DOB: {
             type: Date,

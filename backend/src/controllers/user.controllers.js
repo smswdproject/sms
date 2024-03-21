@@ -6,7 +6,7 @@ const teacherDB = require("../models/teacher.models");
 
 exports.createUser = async(req, res) => {
     try{
-        const {name, email, password, role} = req.body;
+        const {email, password, role} = req.body;
         const userExists = await userDB.findOne({email});
         if(userExists){
             res.status(400).json({
@@ -27,12 +27,12 @@ exports.createUser = async(req, res) => {
             });
         }
 
-        const user = await userDB.create({name, email, password:hashedPassword, role});
+        const user = await userDB.create({email, password:hashedPassword, role});
         if(role === "student"){
-            await studentDB.create({name, email, password:hashedPassword});
+            await studentDB.create({email, password:hashedPassword});
         }
         else if(role === "teacher"){
-            await teacherDB.create({name, email, password:hashedPassword});
+            await teacherDB.create({email, password:hashedPassword});
         }
 
         user.password = undefined;
@@ -80,7 +80,7 @@ exports.updateStudent = async(req, res) => {
         const path = __dirname + "/../../public/profilePics/" + Date.now() + `.${imageExt}`;
         image.mv(path);
 
-        const student = await studentDB.findOneAndUpdate({image:`${path}`, name, rollNo, contactNo, gender, fatherName, motherName, address, city, pinCode, state, updatedAt: Date.now()});
+        const student = await studentDB.findOneAndUpdate({image:`${path}`, name, rollNo, contactNo, DOB, gender, fatherName, motherName, address, city, pinCode, state, updatedAt: Date.now()});
 
         return res.status(200).json({
             success: true,
