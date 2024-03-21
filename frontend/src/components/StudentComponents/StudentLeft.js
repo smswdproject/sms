@@ -4,29 +4,29 @@ import { RiAdminLine } from "react-icons/ri";
 
 function StudentLeft() {
   const navigate = useNavigate();
-  function onClickHandlerD() {
-    navigate("/dashboard");
-  }
+  // function onClickHandlerD() {
+  //   navigate("/dashboard");
+  // }
 
   function onClickHandlerPub() {
     navigate("/profile");
   }
 
-  function onClickHandlerAtt() {
-    navigate("/attendance");
-  }
+  // function onClickHandlerAtt() {
+  //   navigate("/attendance");
+  // }
 
-  function onClickHandlerRes() {
-    navigate("/result");
-  }
+  // function onClickHandlerRes() {
+  //   navigate("/result");
+  // }
 
-  function onClickHandlerSyll() {
-    navigate("/syllabus")
-  }
+  // function onClickHandlerSyll() {
+  //   navigate("/syllabus")
+  // }
 
-  function onClickHandlerFee() {
-    navigate("/fee")
-  }
+  // function onClickHandlerFee() {
+  //   navigate("/fee")
+  // }
 
  
 
@@ -43,7 +43,7 @@ function StudentLeft() {
 
 
       {/* Menu bar */}
-      <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
+      {/* <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
         <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerD}>Dashboad</div>
         <div className='hover:text-custom-color cursor-pointer' onClick={()=>{navigate("/student-dashboard/student-profile")}}>Profile</div>
         <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerAtt}>Attendance</div>
@@ -52,7 +52,19 @@ function StudentLeft() {
         <div className='hover:text-custom-color cursor-pointer' onClick={onClickHandlerFee}>Fee</div>
       </div>
 
-    </div>
+    </div> */}
+
+    {/* Menu bar */}
+    <div className='bg-white w-full h-screen flex flex-col pt-8 pl-12 gap-4 '>
+    <div className='hover:text-custom-color cursor-pointer' >Dashboad</div>
+    <div className='hover:text-custom-color cursor-pointer' onClick={()=>{navigate("/student-dashboard/student-profile")}}>Profile</div>
+    <div className='hover:text-custom-color cursor-pointer' >Attendance</div>
+    <div className='hover:text-custom-color cursor-pointer' >Result</div>
+    <div className='hover:text-custom-color cursor-pointer' >Syllabus </div>
+    <div className='hover:text-custom-color cursor-pointer' >Fee</div>
+  </div>
+
+</div>
   )
 }
 

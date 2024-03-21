@@ -61,12 +61,10 @@ const StudentProfileForm = () => {
       <div className="h-screen overflow-scroll font-poppins gap-y-2">
         <div className="flex-col justify-center mt-56 item-center">
           <div className="max-w-[420px] mx-auto">
+           <div>
             <h1 className="mb-3 text-lg font-bold">
               Create Profile for Student
             </h1>
-
-
-            
 
             {/* Name of student */}
 
@@ -88,7 +86,8 @@ const StudentProfileForm = () => {
               />
             </div>
             <div className="flex items-start mb-5"></div>
-
+            </div>
+            <div>
             {/* Date Of birth */}
             <label
               htmlFor="DOB"
@@ -341,7 +340,7 @@ const StudentProfileForm = () => {
 
             <button
               type="submit"
-              className="mt-4 text-white bg-blue-700
+              className="mt-4   mb-11 text-white bg-blue-700
              hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
               font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
                dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -349,6 +348,8 @@ const StudentProfileForm = () => {
               Submit
             </button>
           </div>
+          </div>
+
         </div>
       </div>
       </div>
