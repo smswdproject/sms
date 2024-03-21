@@ -2,14 +2,28 @@ const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema(
     {
-        SID:{
-            type: Number,
-            // required: true,
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true,
+        },
+        password: {
+            type: String,
+            required: true
+        },
+        image:{
+            type: String,
         },
         name:{
             type: String,
             // required: true,
             trim: true,
+        },
+        rollNo:{
+            type: Number,
+            // required: true,
         },
         contactNo:{
             type: Number,
@@ -17,12 +31,20 @@ const studentSchema = mongoose.Schema(
             // required: true,
             maxLength: 10,
             trim: true,
+<<<<<<< HEAD
         },
         gender:{
             type: String,
+=======
+            maxLength: 10,
+>>>>>>> af4aabcb7f91bc612fed3148d6ad314c672c5846
         },
         DOB: {
             type: Date,
+            // required: true,
+        },
+        gender:{
+            type: String,
             // required: true,
         },
         fatherName:{
@@ -32,11 +54,6 @@ const studentSchema = mongoose.Schema(
         },
         motherName:{
             type: String,
-            // required: true,
-            trim: true,
-        },
-        parentContactNo: {
-            type: Number,
             // required: true,
             trim: true,
         },
