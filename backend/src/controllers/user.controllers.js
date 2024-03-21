@@ -80,7 +80,7 @@ exports.updateStudent = async(req, res) => {
         const path = __dirname + "/../../public/profilePics/" + Date.now() + `.${imageExt}`;
         image.mv(path);
 
-        const student = await studentDB.findOneAndUpdate({image:`${path}`, name, rollNo, contactNo, DOB, gender, fatherName, motherName, address, city, pinCode, state, updatedAt: Date.now()});
+        const student = await studentDB.findOneAndUpdate({email: email}, {image:`${path}`, name, rollNo, contactNo, DOB, gender, fatherName, motherName, address, city, pinCode, state, updatedAt: Date.now()});
 
         return res.status(200).json({
             success: true,
