@@ -3,6 +3,7 @@ import { useState } from "react";
 // import DatePicker from 'react-date-picker';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 import {
   CitySelect,
@@ -13,6 +14,7 @@ import {
 import "react-country-state-city/dist/react-country-state-city.css";
 
 const StudentProfileForm = () => {
+  const [image, setImage] = useState(null);
   const [countryid, setCountryid] = useState(101);
   const [stateid, setstateid] = useState(0);
 
@@ -20,23 +22,21 @@ const StudentProfileForm = () => {
   //const [roll,setRoll]=useState("");
 
   const [formData, setFormData] = useState({
-    fname: "",
-    email: "",
-    password: "",
+    name: "",
+    email: "onkar@gmail.com",
     roll1: "",
     roll2: "",
-    roll: "",
+    rollNo: "",
     contactNo: "",
     gender: "",
     DOB: "",
     fatherName: "",
     motherName: "",
-    parentContactNo: "",
     address: "",
     state: "",
     city: "",
     pinCode: "",
-    img: "",
+    image: ""
   });
 
   function handleChange(event) {
@@ -46,14 +46,31 @@ const StudentProfileForm = () => {
     }));
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  function handleFileChange(e) {
+    setImage(e.target.files[0]);
+  };
 
-    formData.roll = formData.roll1 + formData.roll2;
-    formData.DOB = startDate;
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    // Here you can perform any actions you want with the form data
-    console.log("Form Data is----> ", formData);
+      formData.rollNo = formData.roll1 + formData.roll2;
+      formData.DOB = startDate;
+      formData.append("image", image)
+
+      // Here you can perform any actions you want with the form data
+      console.log("Form Data is----> ", formData);
+
+      const url = "http://localhost:3000/api/v1/student/update";
+
+      const response = await axios.put(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Response of student profile axios req------>".response);
+    } catch (error) {}
   };
 
   return (
@@ -65,23 +82,20 @@ const StudentProfileForm = () => {
               Create Profile for Student
             </h1>
 
-
-            
-
             {/* Name of student */}
 
             <div>
               <label
-                htmlFor="fname"
+                htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Full Name <sup className="text-pink-500">*</sup>
               </label>
               <input
                 type="text"
-                id="fname"
-                value={formData.fname}
-                name="fname"
+                id="name"
+                value={formData.name}
+                name="name"
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required=""
@@ -259,101 +273,102 @@ const StudentProfileForm = () => {
               />
             </div>
 
-           
+            {/* Enter rollNonumber */}
+            <div className="flex justify-center w-full mt-4 mb-5 gap-x-8">
+              <div>
+                <label
+                  htmlFor="roll1"
+                  className="block text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  {" "}
+                  Roll Number <sup className="text-pink-500">*</sup>
+                </label>
+                <select
+                  id="roll1"
+                  value={formData.roll1}
+                  onChange={handleChange}
+                  name="roll1"
+                  //   value={formData.gender}
+                  className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected="">Choose</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                </select>
+              </div>
 
-          {/* Enter roll number */}
-          <div className="flex justify-center w-full mt-4 mb-5 gap-x-8">
-            <div>
-              <label
-                htmlFor="roll1"
-                className="block text-sm font-medium text-gray-900 dark:text-white"
-              > Roll  Number <sup className="text-pink-500">*</sup>
-              </label>
-              <select
-                id="roll1"
-                value={formData.roll1}
-                onChange={handleChange}
-                name="roll1"
-                //   value={formData.gender}
-                className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-                <option selected="">Choose</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-              </select>
-            </div>
-
-            {/* roll2 */}
-            <div className="">
-              <label
-                htmlFor="roll2"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Enter values from 001 to 180{" "}
-                <sup className="text-pink-500">*</sup>
-              </label>
-              <input
-                type="text"
-                id="roll2"
-                value={formData.roll2}
-                name="roll2"
-                min={1}
-                max={180}
-                maxLength={3}
-                onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 w-[300px]
+              {/* roll2 */}
+              <div className="">
+                <label
+                  htmlFor="roll2"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Enter values from 001 to 180{" "}
+                  <sup className="text-pink-500">*</sup>
+                </label>
+                <input
+                  type="text"
+                  id="roll2"
+                  value={formData.roll2}
+                  name="roll2"
+                  min={1}
+                  max={180}
+                  maxLength={3}
+                  onChange={handleChange}
+                  className="bg-gray-50 border border-gray-300 w-[300px]
                text-gray-900 text-sm rounded-lg focus:ring-blue-500
                 focus:border-blue-500 block  p-2.5 dark:bg-gray-700
                  dark:border-gray-600 dark:placeholder-gray-400
                   dark:text-white dark:focus:ring-blue-500
                  dark:focus:border-blue-500 mt-5"
-                required=""
+                  required=""
+                />
+              </div>
+            </div>
+
+            {/* To upload the image of the student */}
+            <div className="max-w-[420px] mx-auto">
+              <label
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="user_avatar"
+              >
+                Upload file <sup className="text-pink-500">*</sup>
+              </label>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                aria-describedby="user_avatar_help"
+                value={formData.image}
+                // onChange={handleChange}
+                id="image"
+                type="file"
+                name="image"
+                // accept="image/*"
+                onChange={handleFileChange}
               />
-            </div>
-          </div>
+              <div
+                className="mt-4 text-sm text-gray-500 dark:text-gray-300"
+                id="user_avatar_help"
+              >
+                A profile picture is useful to confirm your are logged into your
+                account
+              </div>
 
-          {/* To upload the image of the student */}
-          <div className="max-w-[420px] mx-auto">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="user_avatar"
-            >
-              Upload file <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              aria-describedby="user_avatar_help"
-              value={formData.img}
-              onChange={handleChange}
-              id="user_avatar"
-              type="file"
-              name="img"
-            />
-            <div
-              className="mt-4 text-sm text-gray-500 dark:text-gray-300"
-              id="user_avatar_help"
-            >
-              A profile picture is useful to confirm your are logged into your
-              account
-            </div>
-
-            <button
-              type="submit"
-              className="mt-4 text-white bg-blue-700
+              <button
+                type="submit"
+                className="mt-4 text-white bg-blue-700
              hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
               font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
                dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Submit
-            </button>
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </form>
-  
   );
 };
 
