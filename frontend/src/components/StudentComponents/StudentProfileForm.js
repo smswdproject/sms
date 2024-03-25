@@ -61,14 +61,14 @@ const StudentProfileForm = () => {
     }));
   }
 
-  function handleFileChange(e) {
-    const imagedata = new FormData();
-    imagedata.append('file', image);
-    // imagedata.append('fileName', image.name);
-    setImage(e.target.files[0]);
-    console.log(imagedata)
+  // function handleFileChange(e) {
+  //   const imagedata = new FormData();
+  //   imagedata.append('file', image);
+  //   // imagedata.append('fileName', image.name);
+  //   setImage(e.target.files[0]);
+  //   console.log(imagedata)
     
-  };
+  // };
 
   const handleSubmit = async (e) => {
     try {
@@ -380,40 +380,9 @@ const StudentProfileForm = () => {
                 account
               </div>
 
-<<<<<<< HEAD
-          {/* To upload the image of the student */}
-          <div className="max-w-[420px] mx-auto">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="user_avatar"
-            >
-              Upload file <sup className="text-pink-500">*</sup>
-            </label>
-            <input
-              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              aria-describedby="user_avatar_help"
-              value={formData.img}
-              onChange={handleChange}
-              id="user_avatar"
-              type="file"
-              name="img"
-            />
-            <div
-              className="mt-4 text-sm text-gray-500 dark:text-gray-300"
-              id="user_avatar_help"
-            >
-              A profile picture is useful to confirm your are logged into your
-              account
-            </div>
-
-            <button
-              type="submit"
-              className="mt-4   mb-11 text-white bg-blue-700
-=======
               <button
                 type="submit"
                 className="mt-4 text-white bg-blue-700
->>>>>>> ead6c76d1386f1db6e458b30c2e38b42ad593ba7
              hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
               font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
                dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

@@ -18,55 +18,83 @@ const studentSchema = mongoose.Schema(
         },
         name:{
             type: String,
-            // required: true,
+            required: true,
             trim: true,
         },
         rollNo:{
             type: Number,
-            // required: true,
+            required: true,
         },
         contactNo:{
             type: Number,
-            // required: true,
-            // required: true,
+            required: true,
             maxLength: 10,
             trim: true,
             maxLength: 10,
         },
         DOB: {
             type: Date,
-            // required: true,
+            required: true,
         },
         gender:{
             type: String,
-            // required: true,
+            enum: ['Male', 'Female', 'Other'],
+            required: true,
         },
         fatherName:{
             type: String,
-            // required: true,
+            required: true,
             trim: true,
         },
         motherName:{
             type: String,
-            // required: true,
+            required: true,
             trim: true,
         },
         address: {
             type: String,
-            // required: true,
+            required: true,
         },
         city: {
             type: String,
-            // required: true,
+            required: true,
         },
         pinCode: {
             type: Number,
-            // required: true, 
+            required: true, 
         },
         state: {
             type: String,
-            // required: true,
+            required: true,
         },
+        dept:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "deptDB",
+            required: true
+        },
+        semesters: [{
+            semesterNo: {
+                type: Number,
+                required: true
+            },
+            subjects: [{
+                subject: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'subjectDB'
+                },
+                teacher: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'teacherDB'
+                },
+                // attendance: [{
+                //     date: { type: Date },
+                //     status: { type: String } // 'Present', 'Absent', etc.
+                // }],
+                midSemMarks: { type: Number },
+                fullSemMarks: { type: Number },
+                totalMarks: { type: Number },
+            }]
+        }]
     },
 
     {timestamps: true}

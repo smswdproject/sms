@@ -2,9 +2,8 @@ const express = require("express");
 const cors = require("cors")
 const fileupload = require("express-fileupload");
 const annRoutes = require("./routes/ann.routes");
-const authRoutes = require("./routes/auth.routes");
-// const createUserRoutes = require("./routes/createuser.routes");
-const studentExportRoutes = require("./routes/studentExport.routes");
+const authRoutes = require("./routes/login.routes");
+const studentRoutes = require("./routes/student.routes");
 const userRoutes = require("./routes/user.routes")
 
 const app = express();
@@ -41,7 +40,7 @@ app.use("/api/v1/student", userRoutes);
 
 
 // MOUNTING THE EXPORT STUDENT DATA ROUTES
-app.use("/export", studentExportRoutes);
+app.use("/student", studentRoutes);
 
 
 

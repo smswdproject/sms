@@ -11,6 +11,7 @@ const teacherSchema = mongoose.Schema(
         },
         password: {
             type: String,
+            trim: true,
             required: true,
         },
         name:{
@@ -21,6 +22,10 @@ const teacherSchema = mongoose.Schema(
         subject:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "subjectDB"
+        },
+        studentCount:{
+            type: Number,
+            required: true,
         }
     },
 

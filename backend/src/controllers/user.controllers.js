@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userDB = require("../models/user.models");
 const studentDB = require("../models/student.models");
 const teacherDB = require("../models/teacher.models");
+const { ISE } = require("../utils/errors.utils");
 
 exports.createUser = async(req, res) => {
     try{
@@ -90,9 +90,6 @@ exports.updateStudent = async(req, res) => {
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-        });
+        return ISE(error);
     }
 }

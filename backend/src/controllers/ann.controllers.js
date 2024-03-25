@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
 const annDB = require("../models/ann.models");
+const { ISE } = require("../utils/errors.utils");
 
 exports.createAnn = async(req, res) => {
     try{
@@ -39,9 +39,6 @@ exports.createAnn = async(req, res) => {
     }
     catch(error){
         console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-        });
+        return ISE(error);
     }
 }

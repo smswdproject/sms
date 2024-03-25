@@ -6,31 +6,29 @@ const deptSchema = mongoose.Schema(
             type: String,
             required: true,
             maxLength: 50,
+            unique: true
         },
         HOD:{
-            type: String,
-            required: true,
-            maxLength: 50,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "staffDB" // Reference to staff member who is the Head of the Department
         },
+        description: {
+            type: String
+        },
+        subjects: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "subjectDB" // Reference to subjects offered by the department
+        }],
+        staff: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "staffDB" // Reference to staff members working in the department
+        }],
         studentCount:{
             type: Number,
-            required: true,
             default: 0,
-        },
-        staffCount:{
-            type: Number,
-            required: true,
-            default: 0,
-        },
-        subjectCount:{
-            type: Number,
-            required: true,
-            default: 0,
-        },
+        }
     },
-    
     {timestamps: true}
 );
-
 
 module.exports = mongoose.model("deptDB", deptSchema);

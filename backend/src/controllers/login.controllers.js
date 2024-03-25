@@ -1,10 +1,8 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userDB = require("../models/user.models");
-const studentDB = require("../models/student.models");
-const teacherDB = require("../models/teacher.models");
+const { ISE } = require("../utils/errors.utils");
 
 exports.login = async(req, res) => {
     try{
@@ -57,10 +55,6 @@ exports.login = async(req, res) => {
         
     }
     catch(error){
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-        });
+        return ISE(error);
     }
 }

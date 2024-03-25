@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
+const pdfkit = require("pdfkit");
+const fs = require("fs-extra");
 const json2csv = require("json2csv").Parser;
 const studentDB = require("../models/student.models");
 const userDB = require("../models/user.models");
-
+const { ISE } = require("../utils/errors.utils");
 
 exports.studentExport = async(req, res) => {
     try {
@@ -31,6 +32,26 @@ exports.studentExport = async(req, res) => {
         res.status(200).end(csvData);
 
     } catch (error) {
-        
+        return ISE(error);
+    }
+}
+
+exports.studentResult = async(req, res) => {
+    try {
+        const {id, email, semesterNo} = req.body;
+
+        const userRes = await userDB.findById({_id: id});
+        const student = await studentDB.findOne({email: userRes.email});
+
+        const {image, name, rollNo, DOB, gender, fatherName, motherName, dept, semesters} = student;
+
+        const doc = new pdfkit();
+        const filePath = "result_card.pdf";
+
+        doc.pipe(fs.createWriteStream(filePath));
+        doc.fontSize(16).text(`Name: ${name}`);
+
+    } catch (error) {
+        return ISE(error);
     }
 }
