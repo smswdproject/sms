@@ -19,7 +19,7 @@ exports.login = async(req, res) => {
         if(!user){
             return res.status(401).json({
                 success: false,
-                message: "User does not exists",
+                message: "User does not exist",
             });
         }
 
@@ -41,7 +41,7 @@ exports.login = async(req, res) => {
             }
             return res.cookie("token", token, options).status(200).json({
                 success: true,
-                message: "User logged in successfully",
+                message: "Logged in successfully",
                 token,
                 user,
             });

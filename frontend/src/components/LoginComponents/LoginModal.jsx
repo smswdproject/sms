@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 function LoginModal({ setIsLoggedIn, isLoggedIn }) {
     const [selectedRole, setSelectedRole] = useState("");
@@ -19,35 +20,35 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
     const [showPassword, setShowPassword] = useState(false);
 
     const submitHandler = async (event) => {
-        event.preventDefault();
-        // signIn ho gya
-        setIsLoggedIn(true);
-        formData.role = selectedRole;
-        //console.log(formData);
+        try {
+            event.preventDefault();
+        
+            setIsLoggedIn(true);
+            formData.role = selectedRole;
 
+            const url = "http://localhost:3000/login";
+            const response = await axios.post(url, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            // console.log("Response is----->", response);
 
-        // toast.success("Logged In");
-        // if(formData.email==="admin@email.com" && formData.password==="Admin@123"){
-        //     navigate("/dashboard");
-        // }
-        const url = "http://localhost:3000/login";
-        const response = await axios.post(url, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        })
-        console.log("Response is----->", response);
-
-        if (response.status === 200) {
-            if (formData.role === "admin") {
-                navigate("/admin-dashboard");
+            if(response.status === 200) {
+                toast.success(`${response.data.message}`);
+                if (formData.role === "admin") {
+                    navigate("/admin-dashboard");
+                }
+                else if (formData.role === "student") {
+                    navigate("/student-dashboard");
+                }
+                else if (formData.role === "teacher") {
+                    navigate("/teacher-dashboard");
+                }
             }
-            else if (formData.role === "student") {
-                navigate("/student-dashboard");
-            }
-            else if (formData.role === "teacher") {
-                navigate("/teacher-dashboard");
-            }
+        } catch (error) {
+            // console.error(error);
+            toast.warning(`${error.response.data.message}`);
         }
     }
 
@@ -66,7 +67,7 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
     function handlerChange(e) {
         e.preventDefault();
         setSelectedRole(e.target.value);
-        console.log("Role on frontend is ---->", selectedRole)
+        // console.log("Role on frontend is ---->", selectedRole);
     }
     return (
         <div className='flex items-center justify-center w-screen h-screen font-poppins background'>
