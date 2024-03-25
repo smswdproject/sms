@@ -23,59 +23,59 @@ const studentSchema = mongoose.Schema(
         },
         rollNo:{
             type: Number,
-            required: true,
+            // required: true,
         },
         contactNo:{
             type: Number,
-            required: true,
+            // required: true,
             maxLength: 10,
             trim: true,
             maxLength: 10,
         },
         DOB: {
             type: Date,
-            required: true,
+            // required: true,
         },
         gender:{
             type: String,
             enum: ['Male', 'Female', 'Other'],
-            required: true,
+            // required: true,
         },
         fatherName:{
             type: String,
-            required: true,
+            // required: true,
             trim: true,
         },
         motherName:{
             type: String,
-            required: true,
+            // required: true,
             trim: true,
         },
         address: {
             type: String,
-            required: true,
+            // required: true,
         },
         city: {
             type: String,
-            required: true,
+            // required: true,
         },
         pinCode: {
             type: Number,
-            required: true, 
+            // required: true, 
         },
         state: {
             type: String,
-            required: true,
+            // required: true,
         },
         dept:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "deptDB",
-            required: true
+            // required: true
         },
         semesters: [{
             semesterNo: {
                 type: Number,
-                required: true
+                // required: true
             },
             subjects: [{
                 subject: {
@@ -86,10 +86,11 @@ const studentSchema = mongoose.Schema(
                     type: mongoose.Schema.Types.ObjectId,
                     ref: 'teacherDB'
                 },
-                // attendance: [{
-                //     date: { type: Date },
-                //     status: { type: String } // 'Present', 'Absent', etc.
-                // }],
+                attendance: {
+                    attendedDays: { type: Number },
+                    totalDays: { type: Number },
+                    percentage: { type: Number }
+                },
                 midSemMarks: { type: Number },
                 fullSemMarks: { type: Number },
                 totalMarks: { type: Number },

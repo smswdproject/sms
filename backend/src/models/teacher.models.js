@@ -17,7 +17,7 @@ const teacherSchema = mongoose.Schema(
         name:{
             type: String,
             required: true,
-            maxLength: 50,
+            // maxLength: 50,
         },
         subject:{
             type: mongoose.Schema.Types.ObjectId,
@@ -25,7 +25,7 @@ const teacherSchema = mongoose.Schema(
         },
         studentCount:{
             type: Number,
-            required: true,
+            // required: true,
         }
     },
 

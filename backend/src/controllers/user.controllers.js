@@ -6,7 +6,7 @@ const { ISE } = require("../utils/errors.utils");
 
 exports.createUser = async(req, res) => {
     try{
-        const {email, password, role} = req.body;
+        const {name, email, password, role} = req.body;
         const userExists = await userDB.findOne({email});
         if(userExists){
             res.status(400).json({
@@ -29,10 +29,10 @@ exports.createUser = async(req, res) => {
 
         const user = await userDB.create({email, password:hashedPassword, role});
         if(role === "student"){
-            await studentDB.create({email, password:hashedPassword});
+            await studentDB.create({name, email, password:hashedPassword});
         }
         else if(role === "teacher"){
-            await teacherDB.create({email, password:hashedPassword});
+            await teacherDB.create({name, email, password:hashedPassword});
         }
 
         user.password = undefined;
