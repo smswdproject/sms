@@ -46,11 +46,14 @@ exports.studentResult = async(req, res) => {
         const {image, name, rollNo, DOB, gender, fatherName, motherName, dept, semesters} = student;
 
         const doc = new pdfkit();
-        const filePath = "result_card.pdf";
+        const file = "result_card.pdf";
 
-        doc.pipe(fs.createWriteStream(filePath));
+        doc.pipe(fs.createWriteStream(file));
         doc.fontSize(16).text(`Name: ${name}`);
 
+        doc.end();
+
+        res.download(file);
     } catch (error) {
         return ISE(error);
     }
