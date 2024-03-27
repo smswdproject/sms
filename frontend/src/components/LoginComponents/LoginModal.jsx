@@ -36,15 +36,7 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
 
             if(response.status === 200) {
                 toast.success(`${response.data.message}`);
-                if (formData.role === "admin") {
-                    navigate("/admin-dashboard");
-                }
-                else if (formData.role === "student") {
-                    navigate("/student-dashboard");
-                }
-                else if (formData.role === "teacher") {
-                    navigate("/teacher-dashboard");
-                }
+                navigate(`/${selectedRole}-dashboard`);
             }
         } catch (error) {
             // console.error(error);
