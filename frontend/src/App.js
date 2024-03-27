@@ -17,6 +17,7 @@ import Publish from './Routes/Publish';
 import PrivateRoute from './components/PrivateRoute';
 import CreateUser from "./Routes/CreateUser"
 import StudentProfile from './components/StudentComponents/StudentProfile';
+import TeacherResult from "./components/TeacherComponents/TeacherResult"
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
@@ -64,6 +65,7 @@ function App() {
 
             {/* To set the student profile in the student-dashboard section */}
             <Route path="/student-dashboard/student-profile" element={<StudentProfile></StudentProfile>}></Route>
+            <Route path="/teacher-dashboard/teacher-result" element={<TeacherResult></TeacherResult>}></Route>
      </Routes>
     
     </div>
