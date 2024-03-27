@@ -87,8 +87,8 @@ const studentSchema = mongoose.Schema(
                     ref: 'teacherDB'
                 },
                 attendance: {
-                    attendedDays: { type: Number },
-                    totalDays: { type: Number },
+                    present: { type: Number },
+                    total: { type: Number },
                     percentage: { type: Number }
                 },
                 midSemMarks: { type: Number },

@@ -17,40 +17,9 @@ const subjectSchema = mongoose.Schema(
         },
         teacher: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "staffDB", 
+            ref: "teacherDB", 
             // required: true,
         }],
-        // studentCount: {
-        //     type: Number,
-        //     // required: true,
-        //     default: 0,
-        // },
-        // semester: {
-        //     type: Number,
-        //     required: true,
-        // },
-        // midSemMarks: {
-        //     type: Number,
-        //     default: 0,
-        // },
-        // fullSemMarks: {
-        //     type: Number,
-        //     default: 0,
-        // },
-        // totalMarks: {
-        //     type: Number,
-        //     default: 0,
-        // },
-        // attendance: [{
-        //     student: {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: "studentDB"
-        //     },
-        //     attended: {
-        //         type: Boolean,
-        //         default: false
-        //     }
-        // }]
     },
     {timestamps: true}
 );

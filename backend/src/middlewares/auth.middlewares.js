@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken"); 
+const { ISE } = require("../utils/errors.utils");
 require("dotenv").config();
 
 
@@ -15,8 +16,8 @@ exports.auth = (req, res, next) => {
 
         try{
             const payload = jwt.verify(token, process.env.JWT_SECRET);
-
             req.user = payload;
+            next();
         } 
         catch(error){
             res.status(401).json({
@@ -24,15 +25,10 @@ exports.auth = (req, res, next) => {
                 message: "Token is invalid",
             })
         }
-
-        next();
-    }
+    } 
     catch(error){
         console.error(error);
-        res.status(401).json({
-            success: false,
-            message: "Something went wrong"
-        })
+        return ISE(error);
     }
 }
 
@@ -49,10 +45,7 @@ exports.isAdmin = (req, res, next) => {
     }
     catch(error){
         console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        })
+        return ISE(error);
     }
 }
 
@@ -68,10 +61,7 @@ exports.isTeacher = (req, res, next) => {
     }
     catch(error){
         console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        })
+        return ISE(error)
     }
 }
 
@@ -87,9 +77,6 @@ exports.isStudent = (req, res, next) => {
     }
     catch(error){
         console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        })
+        return ISE(error)
     }
 }

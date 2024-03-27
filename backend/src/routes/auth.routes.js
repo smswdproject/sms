@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const {login} = require("../controllers/login.controllers");
-const {auth, isAdmin, isTeacher, isStudent} = require("../middlewares/login.middlewares");
+const {login} = require("../controllers/auth.controllers");
+const {auth, isAdmin, isTeacher, isStudent} = require("../middlewares/auth.middlewares");
 
 
 router.post("/", login);

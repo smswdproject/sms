@@ -2,10 +2,12 @@ const express = require("express");
 const cors = require("cors")
 const fileupload = require("express-fileupload");
 const annRoutes = require("./routes/ann.routes");
-const authRoutes = require("./routes/login.routes");
+const authRoutes = require("./routes/auth.routes");
 const studentRoutes = require("./routes/student.routes");
+const teacherRoutes = require("./routes/teacher.routes");
 const userRoutes = require("./routes/user.routes")
 
+// CREATING THE APP
 const app = express();
 
 
@@ -15,6 +17,7 @@ app.use(express.json());
 
 // ADDING THE CORS
 app.use(cors());
+
 
 // ADDING MIDDLEWARE FOR HANDLING THE MEDIA FILES IN THE REQUEST BODY
 app.use(fileupload({
@@ -35,15 +38,12 @@ app.use("/login", authRoutes);
 app.use("/createuser", userRoutes);
 
 
-// MOUNTING THE UPDATE STUDENT DETAILS ROUTES
-app.use("/api/v1/student", userRoutes);
-
-
-// MOUNTING THE EXPORT STUDENT DATA ROUTES
+// MOUNTING THE STUDENT ROUTES
 app.use("/student", studentRoutes);
 
 
-
+// MOUNTING THE TEACHER ROUTES
+app.use("/teacher", teacherRoutes);
 
 
 module.exports = app;

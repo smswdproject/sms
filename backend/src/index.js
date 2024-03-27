@@ -1,5 +1,5 @@
 // IMPORTING THE .env CONFIGURATION
-require("dotenv").config();
+require("dotenv").config({path: './env'});
 const dbConnect = require("./config/database.config");
 
 const PORT = process.env.PORT || 4000;

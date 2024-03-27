@@ -32,7 +32,6 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
                     "Content-Type": "multipart/form-data",
                 },
             })
-            // console.log("Response is----->", response);
 
             if(response.status === 200) {
                 toast.success(`${response.data.message}`);
@@ -47,7 +46,6 @@ function LoginModal({ setIsLoggedIn, isLoggedIn }) {
                 }
             }
         } catch (error) {
-            // console.error(error);
             toast.warning(`${error.response.data.message}`);
         }
     }

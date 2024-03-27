@@ -29,9 +29,9 @@ exports.login = async(req, res) => {
             role: user.role
         } 
         if(await bcrypt.compare(password, user.password)){
-            let token = jwt.sign(payload,
+            const token = jwt.sign(payload,
                                 process.env.JWT_SECRET,
-                                {expiresIn: "1h",})
+                                {expiresIn: "1h",});
 
             user.token = token;
             user.password = undefined;
