@@ -14,9 +14,17 @@ exports.importResult = async(req, res) => {
         }
         
         const teacherId = req.user.id;
-
+        const teacher = await teacherDB.findById({_id: teacherId}).populate("subject");
+        if(!teacher){
+            return res.status(400).json({
+                success: false,
+                message: "Teacher not found"
+            });
+        }
+        
+        const subjectId = teacher.subject._id;
+        
         const { semesterNo } = req.body;
-
         if(!semesterNo){
             return res.status(400).json({
                 success: false,
@@ -38,7 +46,11 @@ exports.importResult = async(req, res) => {
                 continue;
             }
 
-            // selectedSemester.subjects.
+            const selectedSubject = selectedSemester.subjects.find(subject => subject.subject === subjectId);
+
+            selectedSubject.midSemMarks = row.midSemMarks;
+            selectedSubject.fullSemMarks = row.fullSemMarks;
+            selectedSubject = row.midSemMarks + row.fullSemMarks;
 
             await student.save();
         }

@@ -41,8 +41,8 @@ exports.studentResult = async(req, res) => {
         const {studentId} = req.user.id;
         const {semesterNo} = req.body;
 
-        const userRes = await userDB.findById({_id: studentId});
-        const student = await studentDB.findOne({email: userRes.email});
+        const student = await studentDB.findById({studentId});
+        // const student = await studentDB.findOne({email: userRes.email});
 
         const {image, name, rollNo, DOB, gender, fatherName, motherName, dept, semesters} = student;
 
@@ -81,8 +81,17 @@ exports.studentResult = async(req, res) => {
 
 exports.updateProfile = async(req, res) => {
     try {
-        const {email, role} = req.body;
-        // const userExists = await userDB.findOne({email, role});
+        // const {studentId} = req.user.id;
+        const {email} = req.body;
+
+        if(!email){
+            return res.status(400).json({
+                success: false,
+                message: "Enter all the details"
+            });
+        }
+
+        // const studentExists = await studentDB.findById({studentId});
         const studentExists = await studentDB.findOne({email});
         if(!studentExists){
             return res.status(400).json({
@@ -104,7 +113,7 @@ exports.updateProfile = async(req, res) => {
             });
         }
 
-        const path = __dirname + "/../../public/profilePics/" + Date.now() + `.${imageExt}`;
+        const path = __dirname + "/../../public/profilePics/" + `${studentExists._id}` + `.${imageExt}`;
         image.mv(path);
 
         const student = await studentDB.findOneAndUpdate({email: email}, {image:`${path}`, name, rollNo, contactNo, DOB, gender, fatherName, motherName, address, city, pinCode, state, updatedAt: Date.now()});
