@@ -38,11 +38,11 @@ exports.studentExport = async(req, res) => {
 
 exports.studentResult = async(req, res) => {
     try {
-        const {studentId} = req.user.id;
-        const {semesterNo} = req.body;
+        // const {studentId} = req.user.id;
+        const {email, semesterNo} = req.body;
 
-        const student = await studentDB.findById({studentId});
-        // const student = await studentDB.findOne({email: userRes.email});
+        // const student = await studentDB.findById({studentId});
+        const student = await studentDB.findOne({email:email});
 
         const {image, name, rollNo, DOB, gender, fatherName, motherName, dept, semesters} = student;
 

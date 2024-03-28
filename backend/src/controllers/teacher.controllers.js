@@ -76,7 +76,14 @@ exports.showResult = async(req, res) => {
 
         const subjectId = teacher.subject._id;
 
+        const studentData = [];
 
+        let count = teacher.studentCount;
+        while(count != 0){
+            const student = await studentDB.find({})
+
+            count--;
+        }
         
     } catch (error) {
         return ISE(error);
