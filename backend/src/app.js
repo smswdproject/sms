@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const fileupload = require("express-fileupload");
 const annRoutes = require("./routes/ann.routes");
@@ -7,16 +8,29 @@ const studentRoutes = require("./routes/student.routes");
 const teacherRoutes = require("./routes/teacher.routes");
 const userRoutes = require("./routes/user.routes")
 
+
 // CREATING THE APP
 const app = express();
 
 
-// ADDING MIDDLEWARE FOR PARSING THE JSON REQUEST BODY
-app.use(express.json());
-
-
 // ADDING THE CORS
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
+}));
+
+
+// ADDING MIDDLEWARE FOR PARSING THE JSON REQUEST BODY
+app.use(express.json({limit: "16kb"}));
+
+// ADDING MIDDLEWARE FOR PARSING THE URL
+app.use(express.urlencoded({extended: true, limit:"16kb"}));
+
+// ADDING MIDDLEWARE FOR STORING THE FILES TO THE PUBLIC FOLDER
+app.use(express.static("public"));
+
+// ADDING MIDDLEWARE FOR PARSING THE COOKIES
+app.use(cookieParser());
 
 
 // ADDING MIDDLEWARE FOR HANDLING THE MEDIA FILES IN THE REQUEST BODY

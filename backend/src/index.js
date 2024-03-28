@@ -10,10 +10,15 @@ const app = require("./app");
 
 
 // CONNECTING THE SERVER WITH THE DATABASE
-dbConnect();
-
-
-// ACTIVATING THE SERVER TO LISTEN
-app.listen(PORT, () => {
-    console.log(`SERVER IS LISTENING AT THE PORT NO. ${PORT}`);
+dbConnect()
+.then(() => {
+    // ACTIVATING THE SERVER TO LISTEN
+    app.listen(PORT, () => {
+        console.log(`SERVER IS LISTENING AT THE PORT NO. ${PORT}`);
+    })
 })
+.catch((error) => {
+    console.log("DATABASE CONNECTION FAILED");
+})
+
+
