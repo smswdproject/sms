@@ -18,7 +18,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             enum: ["admin", "teacher", "student"]
         },
-        
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: `role`,
+        }
     },
 
     {timestamps: true}

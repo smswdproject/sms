@@ -27,13 +27,14 @@ exports.createUser = async(req, res) => {
             });
         }
 
-        const user = await userDB.create({email, password:hashedPassword, role});
+        let tempuser;
         if(role === "student"){
-            await studentDB.create({name, email, password:hashedPassword});
+            tempuser = await studentDB.create({name, email, password:hashedPassword});
         }
         else if(role === "teacher"){
-            await teacherDB.create({name, email, password:hashedPassword});
+            tempuser = await teacherDB.create({name, email, password:hashedPassword});
         }
+        const user = await userDB.create({email, password:hashedPassword, role, userId:tempuser._id});
 
         user.password = undefined;
         res.status(200).json({

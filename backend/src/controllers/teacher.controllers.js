@@ -12,8 +12,12 @@ exports.importResult = async(req, res) => {
                 message: "No file selected"
             });
         }
+        
+        const teacherId = req.user.id;
+        const teacher = teacherDB
 
         const { semesterNo } = req.body;
+
         if(!semesterNo){
             return res.status(400).json({
                 success: false,
