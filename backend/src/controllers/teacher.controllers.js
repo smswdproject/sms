@@ -14,7 +14,6 @@ exports.importResult = async(req, res) => {
         }
         
         const teacherId = req.user.id;
-        const teacher = teacherDB
 
         const { semesterNo } = req.body;
 

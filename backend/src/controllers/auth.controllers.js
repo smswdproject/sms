@@ -2,6 +2,8 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userDB = require("../models/user.models");
+const studentDB = require("../models/student.models");
+const teacherDB = require("../models/teacher.models");
 const { ISE } = require("../utils/errors.utils");
 
 exports.login = async(req, res) => {
@@ -15,12 +17,19 @@ exports.login = async(req, res) => {
             });
         }
 
-        const user = await userDB.findOne({email, role});
+        let user = await userDB.findOne({email, role});
         if(!user){
             return res.status(401).json({
                 success: false,
                 message: "User does not exist",
             });
+        }
+
+        if(role === "student"){
+            user = await studentDB.findById({_id: user.userId});
+        }
+        else if(role === "teacher"){
+            user = await teacherDB.findById({_id: user.userId});
         }
 
         const payload = {
