@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const teacherSchema = mongoose.Schema(
+const teacherSchema = new mongoose.Schema(
     {
         email: {
             type: String,
@@ -8,6 +8,7 @@ const teacherSchema = mongoose.Schema(
             unique: true,
             lowercase: true,
             trim: true,
+            index: true
         },
         password: {
             type: String,

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
-const subjectSchema = mongoose.Schema(
+const subjectSchema = new mongoose.Schema(
     {
         name: {
             type: String,
             required: true,
             maxLength: 50,
+            index: true
         },
         description: {
             type: String,

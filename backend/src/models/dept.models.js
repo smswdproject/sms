@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 
-const deptSchema = mongoose.Schema(
+const deptSchema = new mongoose.Schema(
     {
         name:{
             type: String,
             required: true,
             maxLength: 50,
-            unique: true
+            unique: true,
+            index: true
         },
         HOD:{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "staffDB" // Reference to staff member who is the Head of the Department
+            ref: "teacherDB" // Reference to staff member who is the Head of the Department
         },
         description: {
             type: String
@@ -21,7 +22,7 @@ const deptSchema = mongoose.Schema(
         }],
         staff: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "staffDB" // Reference to staff members working in the department
+            ref: "teacherDB" // Reference to staff members working in the department
         }],
         studentCount:{
             type: Number,
